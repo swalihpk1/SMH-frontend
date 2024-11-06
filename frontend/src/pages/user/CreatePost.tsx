@@ -55,9 +55,7 @@ import SocialPlatformUploader from '../../components/LoadingAnimation/uploadLoad
 import SchedulePicker from '../../components/SchedulePicker';
 import { useShedulePostMutation } from '../../api/ApiSlice';
 import { useNavigate } from 'react-router-dom';
-import { CreatePostProps } from '../../types/Types';
-
-
+import { CreatePostProps, CustomEvent } from '../../types/Types';
 
 const CreatePost: React.FC<CreatePostProps> = ({ event, onClose, triggerSnackbar, updateEvents }) => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -214,7 +212,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ event, onClose, triggerSnackbar
 
             await editPost(editRequest).unwrap();
 
-            const updatedEvent = {
+            const updatedEvent: CustomEvent = {
                 ...event,
                 id: event.id,
                 title: newContent,

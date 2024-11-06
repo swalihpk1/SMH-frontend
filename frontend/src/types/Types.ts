@@ -120,21 +120,23 @@ export interface AddSocialModalProps {
     handleClose: () => void;
 }
 
-export interface CreatePostProps {
-    event?: Event;
-    onClose?: () => void;
-    triggerSnackbar?: (message: string, severity: 'success' | 'info' | 'warning' | 'error') => void;
-    updateEvents?: (event: Event, action: string) => void;
+export interface CustomEvent {
+    id: string;
+    title: string;
+    extendedProps: {
+        content: string;
+        imageUrl: string | null;
+        platform: string;
+        jobId: string;
+    };
 }
 
-export interface Event {
-    extendedProps: {
-        platform?: string;
-        content?: string;
-        imageUrl?: string;
-        jobId?: string;
-    };
-    title?: string;
+export interface CreatePostProps {
+    id?: string;
+    event?: CustomEvent;
+    onClose?: () => void;
+    triggerSnackbar?: (message: string, severity: 'success' | 'info' | 'warning' | 'error') => void;
+    updateEvents?: (event: CustomEvent, action: string) => void;
 }
 
 export interface ShortenedLinks {
